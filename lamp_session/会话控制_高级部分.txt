@@ -1,0 +1,125 @@
+一、介绍SESSIO信息写入到自己定义的位置
+	
+	1. 解决跨机保存SESSION
+		在Linux下可以使用nfs或是samba, 共享文件夹的方式
+
+		使用数据库来实现
+
+		memcache来保存会话信息
+		
+		session_set_save_handler()	
+
+	2. 解决在线用户信息
+
+
+二、介绍一下PHP配置文件中的常用选择(PHP.in) （写个例子演示， 以下参数,用默认的存储方未予）
+session.name
+session.use_trans_sid
+	启用SID的支持
+session.save_path=
+
+session.use_cookies =1 
+session.cookie_path = '/'
+session.cookie_domain = ''
+session.cookie_lifetime = 0
+
+session.save_handler= memcache
+
+session.gc_maxlifetime
+		garbage collection 垃圾回收
+
+		指定过了多少秒之后数据就会被视为“垃圾”，并被清楚
+	
+session.gc_probability=1
+session.gc_divisor=100
+	这两个合起来就是启动gc进程管理概率的
+
+	初使化时（session_start()）
+
+	session.gc_probability/session.gc_divisor
+	1/100
+
+
+三、介绍一下session_set_save_handler()函数的使用
+	
+
+	session_set_save_handler()
+
+	
+
+四、写入自己定义的文件，或远程服务器的硬盘中
+   
+	
+
+五、将SESSION数据写入数据库中（使用PDO）
+
+	
+	session_set_save_handler();
+
+	pdo 
+
+	1. 表设计 
+
+	2. 用类编写完成，写入数据库的表中session
+
+	3. 加入到实例中
+
+	
+	类中各回调函数定义都要定义为静态方法，属性也要是静态的（静态成员使用）
+	
+
+	SESSIONID， update_time, client_ip, data
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+六、将SESSION信息写入到MemCache服务器中
+
+
+     会memcache
+
+     php 的 session 
+
+    session_set_save_handler()
+
+
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	
